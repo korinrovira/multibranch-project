@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'nodo-1'
+        label: 'worker-dev'
     }
 
     stages {
