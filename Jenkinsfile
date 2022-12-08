@@ -36,8 +36,11 @@ pipeline {
 
         stage('Upload docker image') {
             steps {
-                sh 'docker login -u korinrovira -p &t33lD00r928+'
+                withCredentials([string(credentialsId: 'docker-id', variable: 'dockerpwd')]) {
+   sh 'docker login -u korinrovira -p ${dockerpwd} '
                 sh 'docker image push korinrovira/webapp-ucreativa:latest'
+}
+                
             }
         }
     }
